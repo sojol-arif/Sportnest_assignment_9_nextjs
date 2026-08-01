@@ -1,26 +1,153 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f6f2;
+  --foreground: #99a1af;
+  --accent: #3d8b5e;
+  --accent-foreground: #ffffff;
+  --accent-hover: #326d4b;
+  --danger: #99a1af;
+  --default: #1a1a1e;
 }
 
+
+/* ============================================
+   3. TAILWIND BRIDGE — @theme inline
+   ============================================ */
 @theme inline {
-  --color-background: var(--background);
+  /* --- Fonts --- */
+  --font-sans: "DM Sans", "DM Sans Fallback";
+  /*--font-heading: "Poppins", sans-serif; */
+
+  /* --- Font sizes --- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* --- Radius --- */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* --- Accent --- */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-hover: var(--accent-soft-hover);
+  --color-accent-soft-foreground: var(--accent-soft-foreground);
+
+  /* --- Default --- */
+  --color-default: var(--default);
+  --color-default-hover: var(--default-hover);
+  --color-default-foreground: var(--default-foreground);
+
+  /* --- Success --- */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-hover: var(--success-hover);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-hover: var(--success-soft-hover);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+
+  /* --- Warning --- */
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-hover: var(--warning-hover);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-hover: var(--warning-soft-hover);
+  --color-warning-soft-foreground: var(--warning-soft-foreground);
+
+  /* --- Danger --- */
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-soft-hover: var(--danger-soft-hover);
+  --color-danger-soft-foreground: var(--danger-soft-foreground);
+
+  /* --- Foreground --- */
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-segment: var(--segment);
+  --color-overlay: var(--overlay);
+  --color-link: var(--link);
+
+  /* --- Background --- */
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-background-inverse: var(--background-inverse);
+
+  /* --- Surface --- */
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-tertiary: var(--surface-tertiary);
+
+  /* --- Form field --- */
+  --color-field: var(--field-bg);
+  --color-field-hover: var(--field-hover);
+  --color-field-focus: var(--field-focus);
+  --color-field-placeholder: var(--field-placeholder);
+  --color-field-foreground: var(--field-foreground);
+
+  /* --- Separator --- */
+  --color-separator: var(--separator);
+  --color-separator-secondary: var(--separator-secondary);
+  --color-separator-tertiary: var(--separator-tertiary);
+
+  /* --- Other --- */
+  --color-border: var(--border);
+  --color-backdrop: var(--backdrop);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================
+   4. GLOBAL DEFAULTS
+   ============================================ */
+body {
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--text-sm);
+}
+
+h1, h2, h3, h4 {
+  /* font-family: var(--font-heading); */
+}
+
+.add_facility_form {
+  .textfield{
+    gap:0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+
+  /* Customize buttons */
+  .primary_btn{
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover rounded-lg;
+  }
+
+  /* Customize Container */
+  .container_s {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Form Field */
+  .form_label{
+    @apply text-xs text-gray-400 mb-1.5 block;
+  }
+
+  .form_input{
+    @apply text-[14px] w-full px-3.5 py-2.5 bg-background border border-[1px] border-[rgba(0,0,0,0.06)] rounded-xl text-sm shadow-none focus:border-[#3d8b5e] focus:outline-none focus:ring-0 focus:shadow-none transition-colors text-default placeholder:text-[#99a1af];
+  }
+
 }
