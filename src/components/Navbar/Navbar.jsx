@@ -13,7 +13,7 @@ const NAV_LINKS = [
     { href: "/", label: "Home" },
     { href: "/facilities", label: "All Facilities" },
     { href: "/add-facility", label: "Add Facility" },
-    { href: "/bookings", label: "My Bookings" },
+    { href: "/my-bookings", label: "My Bookings" },
     { href: "/manage-facilities", label: "Manage My Facilities" },
 ];
 
@@ -80,9 +80,9 @@ export default function Navbar() {
                                             </div>
                                             <span className="text-sm text-[#1a1a1e]">{user?.name}</span>
                                             {isOpenLogout ?
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-chevron-down text-gray-400 transition-transform rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gray-400 transition-transform rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
                                                 :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-chevron-down text-gray-400 transition-transform"><path d="m6 9 6 6 6-6"></path></svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down text-gray-400 transition-transform"><path d="m6 9 6 6 6-6"></path></svg>
                                             }
                                         </button>
                                         {isOpenLogout &&
@@ -92,7 +92,7 @@ export default function Navbar() {
                                                     <p className="text-xs text-gray-400 truncate">{user?.email}</p>
                                                 </div>
                                                 <div className="border-t border-gray-100 mt-1 pt-1">
-                                                    <button className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-50 transition-colors flex items-center gap-2" onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Logout</button>
+                                                    <button className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-50 transition-colors flex items-center gap-2" onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" x2="9" y1="12" y2="12"></line></svg> Logout</button>
                                                 </div>
                                             </div>
                                         }

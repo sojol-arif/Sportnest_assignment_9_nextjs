@@ -11,7 +11,7 @@ const AddFacilities = () => {
 
     const [slotInput, setSlotInput] = useState('');
     const [timeSlots, setTimeSlots] = useState([]);
-    
+
 
     const addSlot = () => {
         const trimmed = slotInput.trim();
@@ -58,7 +58,6 @@ const AddFacilities = () => {
         router.push('/facilities');
     }
 
-
     return (
         <div className="min-h-screen bg-background add_facility_page">
             <div className="bg-white border-b border-[rgba(0,0,0,0.06)] py-10">
@@ -83,41 +82,19 @@ const AddFacilities = () => {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
-                                <Select name="facilityType" isRequired placeholder="🎾 Tennis">
-                                    <Label className="form_label">Facility Type *</Label>
-                                    <Select.Trigger className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-gray-600 shadow-none">
-                                        <Select.Value />
-                                        <Select.Indicator />
-                                    </Select.Trigger>
-                                    <Select.Popover>
-                                        <ListBox>
-                                            <ListBox.Item id="⚽ Football" textValue="football">
-                                                ⚽ Football
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                            <ListBox.Item id="🏸 Badminton" textValue="badminton">
-                                                🏸 Badminton
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                            <ListBox.Item id="🎾 Tennis" textValue="tennis">
-                                                🎾 Tennis
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                            <ListBox.Item id="🏊‍♂️ Swimming" textValue="swimming">
-                                                🏊‍♂️ Swimming
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                            <ListBox.Item id="🏀 Basketball" textValue="basketball">
-                                                🏀 Basketball
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                            <ListBox.Item id="🏏 Cricket" textValue="cricket">
-                                                🏏 Cricket
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                        </ListBox>
-                                    </Select.Popover>
-                                </Select>
+                                <Label className='form_label'>Facility Type *</Label>
+                                <select
+                                    class="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-gray-600"
+                                    name="facilityType"
+                                >
+                                    <option value="Football">⚽ Football</option>
+                                    <option value="Badminton">🏸 Badminton</option>
+                                    <option value="Tennis">🎾 Tennis</option>
+                                    <option value="Swimming">🏊 Swimming</option>
+                                    <option value="Basketball">🏀 Basketball</option>
+                                    <option value="Cricket">🏏 Cricket</option>
+                                </select>
+
                             </div>
                             <div>
                                 <TextField

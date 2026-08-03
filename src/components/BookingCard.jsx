@@ -25,6 +25,9 @@ const BookingCard = ({ facility }) => {
             userImg: user?.image,
             user_email: user?.email,
             facilityId: _id,
+            facilityName,
+            facilityImage: image,
+            facilityType,
             timeSlot: availableTimeSlots,
             hours: '1', /* need code */
             totalPrice: price,
@@ -55,11 +58,11 @@ const BookingCard = ({ facility }) => {
             <form onSubmit={handleBooking} className="space-y-4">
                 <div>
                     <label className="text-xs text-gray-400 mb-1.5 block font-normal">Facility</label>
-                    <input type="text" readOnly="" className="w-full px-3 py-2.5 bg-[#f4f6f2] border border-[rgba(0,0,0,0.06)] focus:border-[#3d8b5e] focus:outline-none rounded-xl text-sm text-gray-500 font-light" value={facilityName} />
+                    <input type="text" readOnly="" className="w-full px-3 py-2.5 bg-[#f4f6f2] border border-[rgba(0,0,0,0.06)] focus:border-[#3d8b5e] focus:outline-none rounded-xl text-sm text-gray-500 font-light" defaultValue={facilityName} />
                 </div>
                 <div>
                     <label className="text-xs text-gray-400 mb-1.5 block font-normal">Booking Date</label>
-                    <input onChange={(e) => setBookedDate(e.target.value)} value={bookedDate || ''} type="date" min="2026-07-23" className="w-full px-3 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-default" />
+                    <input onChange={(e) => setBookedDate(e.target.value)} defaultValue={bookedDate || ''} type="date" min="2026-07-23" className="w-full px-3 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-default" />
                 </div>
                 <div>
                     <label className="text-xs text-gray-400 mb-1.5 block font-normal">Time Slot</label>
