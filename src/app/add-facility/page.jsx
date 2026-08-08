@@ -14,7 +14,7 @@ const AddFacilities = () => {
         data: session,
     } = authClient.useSession()
     const user = session?.user
-    console.log('user from add facility page', user);
+    //console.log('user from add facility page', user);
 
     const [slotInput, setSlotInput] = useState('');
     const [timeSlots, setTimeSlots] = useState([]);
@@ -31,7 +31,7 @@ const AddFacilities = () => {
         setSlotInput('');
     };
 
-    console.log(timeSlots, 'timeSlots');
+    //console.log(timeSlots, 'timeSlots');
 
     const removeSlot = (slotToRemove) => {
         setTimeSlots(timeSlots.filter((slot) => slot !== slotToRemove));
@@ -51,19 +51,22 @@ const AddFacilities = () => {
         const facility = Object.fromEntries(formData.entries());
         facility.availableTimeSlots = timeSlots; // array, not part of native FormData
 
-        console.log('facility data to be sent to server', facility);
+        //console.log('facility data to be sent to server', facility);
+
+        const { data: tokenData } = await authClient.token();
 
         const res = await fetch('http://localhost:5000/facility', {
             cache: 'no-store',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(facility),
         });
 
         const data = await res.json();
-        console.log('Response from server:', data);
+        //console.log('Response from server:', data);
         toast("Facility added successfully!", { type: "success" });
         router.push('/facilities');
     }

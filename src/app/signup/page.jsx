@@ -11,7 +11,7 @@ const SignUpPage = () => {
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
 
-        console.log(user, 'user from front end SignUp');
+        //console.log(user, 'user from front end SignUp');
 
         const { data, error } = await authClient.signUp.email({
             email: user.email, // user email address
@@ -28,11 +28,11 @@ const SignUpPage = () => {
             alert(error);
         }
 
-        console.log({ data, error });
+        //console.log({ data, error });
     };
 
     const handleGoogleSignIn = async () => {
-        console.log('a');
+        //console.log('a');
         await authClient.signIn.social({
             provider: "google",
         });

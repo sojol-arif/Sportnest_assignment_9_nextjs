@@ -15,7 +15,7 @@ export function BookingCancelAlert({ bookingId }) {
 
     const data = await res.json();
 
-    console.log(data, 'data from booking cancel alert');
+    //console.log(data, 'data from booking cancel alert');
 
   }
 

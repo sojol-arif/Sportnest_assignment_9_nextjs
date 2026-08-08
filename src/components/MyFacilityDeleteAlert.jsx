@@ -11,7 +11,7 @@ export function MyFacilitiesDeleteAlert({ facilityId }) {
                 method: 'DELETE',
             });
             if (response.ok) {
-                console.log('Facility deleted successfully');
+                //console.log('Facility deleted successfully');
                 // Optionally, you can update the UI or state to reflect the deletion
             }
         } catch (error) {

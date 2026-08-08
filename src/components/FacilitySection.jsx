@@ -6,7 +6,7 @@ const FacilitySection = async () => {
     const res = await fetch('http://localhost:5000/facility');
 
     const facilities = await res.json();
-    console.log(facilities, 'from frontend Facility Seciton');
+    //console.log(facilities, 'from frontend Facility Seciton');
 
     return (
         <div className='container_s py-8'>

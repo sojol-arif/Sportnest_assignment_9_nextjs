@@ -1,6 +1,6 @@
 'use client'
 
-import { authClient } from "@/lib/auth-client";
+import { authClient } from '@/lib/auth-client';
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -10,9 +10,9 @@ const BookingCard = ({ facility }) => {
     const {
         data: session,
     } = authClient.useSession();
-    console.log('session from bookin bard', session)
+    //console.log('session from bookin bard', session)
     const user = session?.user
-    console.log('user from booking card', user);
+    //console.log('user from booking card', user);
 
     const { facilityName, facilityType, location, price, capacity, image, availableTimeSlots, description, _id } = facility
 
@@ -36,18 +36,22 @@ const BookingCard = ({ facility }) => {
 
         }
 
-        // console.log('bookingData', bookingData)
+        const {data:tokenData} = await authClient.token();
+        console.log('tokenData from booking card', tokenData);
+
+        // //console.log('bookingData', bookingData)
         const res = await fetch('http://localhost:5000/booking/', {
             cache: 'no-store',
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}` // Include the access token in the Authorization header
             },
             body: JSON.stringify(bookingData)
         });
 
         const data = await res.json();
-        console.log('booking response', data);
+        //console.log('booking response', data);
 
         if (data) {
             toast('Booking Confirmed!', { type: 'success' });

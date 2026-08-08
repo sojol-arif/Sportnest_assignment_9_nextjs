@@ -7,7 +7,7 @@ export async function proxy(request) {
         headers: await headers() 
     })
 
-    console.log('Session from proxy:', session); // Log the session object for debugging
+    //console.log('Session from proxy:', session); // Log the session object for debugging
 
     if(!session){
         return NextResponse.redirect(new URL('/login', request.url))

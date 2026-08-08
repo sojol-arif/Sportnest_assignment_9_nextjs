@@ -5,7 +5,7 @@ import FacilityCard from '@/components/FacilityCard';
 const FacilitiesList = ({ facilities }) => {
     const [search, setSearch] = useState('');
     const [sport, setSport] = useState('All');
-    console.log(sport);
+    //console.log(sport);
 
     const matchesSearch = (facility, search) => {
         return facility.facilityName

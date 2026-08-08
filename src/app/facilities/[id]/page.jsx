@@ -2,18 +2,23 @@ import React from 'react';
 import Image from 'next/image';
 import { Users, MapPin, Clock, DollarSign, Target } from 'lucide-react';
 import BookingCard from '@/components/BookingCard';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const FacilityDetails = async ({ params }) => {
     const { id } = await params;
-    console.log(id, 'from frontend Facility Details Page');
+    //console.log(id, 'from frontend Facility Details Page');
 
-    const res = await fetch(`http://localhost:5000/facility/${id}`,
-        {
-            headers: {
-                authorization: `logged in`,
-            },
-        }
-    );
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+    //console.log(token);
+
+    const res = await fetch(`http://localhost:5000/facility/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+    });
     const facility = await res.json();
 
     const { facilityName, facilityType, location, price, capacity, image, availableTimeSlots, description, _id } = facility
@@ -21,13 +26,14 @@ const FacilityDetails = async ({ params }) => {
     const facilityOverview = [
         { icon: DollarSign, middleText: 'Per Hour', lastText: `$${price}` },
         { icon: Users, middleText: 'Capacity', lastText: `${capacity} people` },
-        { icon: Clock, middleText: 'Time Slots', lastText: `${Array.isArray(availableTimeSlots) ?
-                                            (
-                                                `${availableTimeSlots.length} available`
-                                            ) 
-                                            :
-                                            ('1 available')  }`
-                                        },
+        {
+            icon: Clock, middleText: 'Time Slots', lastText: `${Array.isArray(availableTimeSlots) ?
+                (
+                    `${availableTimeSlots.length} available`
+                )
+                :
+                ('1 available')}`
+        },
         { icon: Target, middleText: 'Bookings', lastText: `89+ made` },
     ];
 
@@ -92,7 +98,7 @@ const FacilityDetails = async ({ params }) => {
                         </div>
                     </div>
                     <div>
-                        <BookingCard facility={facility}/>
+                        <BookingCard facility={facility} />
                     </div>
                 </div>
             </div>

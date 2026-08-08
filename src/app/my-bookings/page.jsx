@@ -9,10 +9,18 @@ const MyBookingPage = async () => {
     });
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`);
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    });
+
+    const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+        headers: {
+            authorization: `Bearer ${token}`,
+        }
+    });
     const bookingData = await res.json();
 
-    console.log('Total booking data from bookings page', bookingData);
+    //console.log('Total booking data from bookings page', bookingData);
 
     return (
         <div className="min-h-screen bg-[#f4f6f2]">

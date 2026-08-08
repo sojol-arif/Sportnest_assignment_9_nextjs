@@ -5,11 +5,11 @@ const EditFacilityModal = ({ facility, onClose }) => {
     const handleUpdateMyFacility = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        console.log('form data', formData);
+        //console.log('form data', formData);
         const facilityData = Object.fromEntries(formData.entries());
-        console.log(facilityData, 'from edit save modal');
+        //console.log(facilityData, 'from edit save modal');
 
-        console.log('facility id from edit modal', facility);
+        //console.log('facility id from edit modal', facility);
 
         const res = await fetch(`http://localhost:5000/facilities/${facility._id}`, {
             cache: 'no-store',
@@ -20,7 +20,7 @@ const EditFacilityModal = ({ facility, onClose }) => {
             body: JSON.stringify(facilityData)
         })
         const data = await res.json();
-        console.log(data, 'data from edit destination front end');
+        //console.log(data, 'data from edit destination front end');
         onClose(); 
     }
 
