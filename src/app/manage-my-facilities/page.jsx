@@ -13,7 +13,7 @@ const ManageMyFacilities = async () => {
         headers: await headers()
     });
 
-    const res = await fetch(`http://localhost:5000/facilities/${user?.email}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${user?.email}`, {
         headers: {
             authorization: `Bearer ${token}`
         }

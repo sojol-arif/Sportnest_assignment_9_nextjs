@@ -3,7 +3,7 @@ import FacilityCard from './FacilityCard';
 import Link from 'next/link';
 
 const FacilitySection = async () => {
-    const res = await fetch('http://localhost:5000/facility');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facility`);
 
     const facilities = await res.json();
     //console.log(facilities, 'from frontend Facility Seciton');

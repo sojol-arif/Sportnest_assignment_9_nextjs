@@ -1,7 +1,7 @@
 import FacilitiesList from '@/components/FacilitiesList';
 
 const Facilities = async () => {
-    const res = await fetch('http://localhost:5000/facility');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facility`);
     const facilities = await res.json();
 
     return (

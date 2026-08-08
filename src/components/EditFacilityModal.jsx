@@ -11,7 +11,7 @@ const EditFacilityModal = ({ facility, onClose }) => {
 
         //console.log('facility id from edit modal', facility);
 
-        const res = await fetch(`http://localhost:5000/facilities/${facility._id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${facility._id}`, {
             cache: 'no-store',
             method: 'PATCH',
             headers: {

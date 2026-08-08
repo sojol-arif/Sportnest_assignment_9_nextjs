@@ -40,7 +40,7 @@ const BookingCard = ({ facility }) => {
         console.log('tokenData from booking card', tokenData);
 
         // //console.log('bookingData', bookingData)
-        const res = await fetch('http://localhost:5000/booking/', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/`, {
             cache: 'no-store',
             method: 'POST',
             headers: {

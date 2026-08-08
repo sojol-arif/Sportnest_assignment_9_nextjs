@@ -6,7 +6,7 @@ export function MyFacilitiesDeleteAlert({ facilityId }) {
 
     const handleDeleteFacility = async (facilityId) => {
         try {
-            const response = await fetch(`http://localhost:5000/facilities/${facilityId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facilities/${facilityId}`, {
                 cache: 'no-store',
                 method: 'DELETE',
             });
