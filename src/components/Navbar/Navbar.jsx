@@ -14,7 +14,7 @@ const NAV_LINKS = [
     { href: "/facilities", label: "All Facilities" },
     { href: "/add-facility", label: "Add Facility" },
     { href: "/my-bookings", label: "My Bookings" },
-    { href: "/manage-facilities", label: "Manage My Facilities" },
+    { href: "/manage-my-facilities", label: "Manage My Facilities" },
 ];
 
 export default function Navbar() {

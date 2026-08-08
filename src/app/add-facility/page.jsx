@@ -5,9 +5,16 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
 
 const AddFacilities = () => {
     const router = useRouter();
+
+    const {
+        data: session,
+    } = authClient.useSession()
+    const user = session?.user
+    console.log('user from add facility page', user);
 
     const [slotInput, setSlotInput] = useState('');
     const [timeSlots, setTimeSlots] = useState([]);
@@ -44,7 +51,10 @@ const AddFacilities = () => {
         const facility = Object.fromEntries(formData.entries());
         facility.availableTimeSlots = timeSlots; // array, not part of native FormData
 
+        console.log('facility data to be sent to server', facility);
+
         const res = await fetch('http://localhost:5000/facility', {
+            cache: 'no-store',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +94,7 @@ const AddFacilities = () => {
                             <div>
                                 <Label className='form_label'>Facility Type *</Label>
                                 <select
-                                    class="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-gray-600"
+                                    className="w-full px-3.5 py-2.5 bg-white border border-[rgba(0,0,0,0.08)] rounded-xl text-sm focus:outline-none focus:border-[#3d8b5e] transition-colors text-gray-600"
                                     name="facilityType"
                                 >
                                     <option value="Football">⚽ Football</option>
@@ -209,8 +219,7 @@ const AddFacilities = () => {
                                 type="email"
                             >
                                 <Label className='form_label'>Owner Email (auto-filled)</Label>
-                                <Input type="email" placeholder="alex@gmail.com" className="form_input" />
-                                <FieldError />
+                                <Input type="email" value={user?.email} readOnly className="form_input" />
                             </TextField>
                         </div>
 

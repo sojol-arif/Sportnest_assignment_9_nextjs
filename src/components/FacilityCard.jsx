@@ -16,15 +16,21 @@ const FacilityCard = ({ facility }) => {
                     height={300}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3"><span className="bg-emerald-50 text-emerald-700 text-xs font-normal px-3 py-1 rounded-full backdrop-blur-sm">{facilityType}</span></div>
+                <div className="absolute top-3 left-3">
+
+                    <div className="bg-emerald-50 text-emerald-700 text-xs font-normal px-3 py-1 rounded-full backdrop-blur-sm">
+                        {facilityType === 'Football' ? <span>⚽</span> : facilityType === 'Badminton' ? <span>🏸</span> : facilityType === 'Basketball' ? <span>🏀</span> : facilityType === 'Tennis' ? <span>🎾</span> : facilityType === 'Cricket' ? <span>🏏 </span> : facilityType === 'Swimming' ? <span>🏊 </span> : ''}
+                        <span>{facilityType}</span>
+                    </div>
+                </div>
             </div>
             <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-medium text-default text-[15px] mb-1 leading-snug lineClamp-1">{facilityName}</h3>
+                <h3 className="font-medium text-default text-[15px] mb-1 leading-snug line-clamp-1">{facilityName}</h3>
                 <div className="flex items-center gap-1 text-gray-400 text-xs mb-3">
                     <MapPin width={11} height={11} />
                     <span>{location}</span>
                 </div>
-                <p className="text-gray-400 text-sm lineClamp-2 mb-4 flex-1 leading-relaxed">{description}</p>
+                <p className="text-gray-400 text-sm line-clamp-2 mb-4 flex-1 leading-relaxed">{description}</p>
                 <div className="grid grid-cols-2 gap-2 mb-4">
                     <div className="flex items-center gap-1.5 text-gray-500 text-xs">
                         <Users width={11} height={11} className="text-[#3d8b5e]" />

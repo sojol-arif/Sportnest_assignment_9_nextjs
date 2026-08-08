@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import { BookingCancelAlert } from "./BookingCancelAlert";
 
@@ -20,7 +21,21 @@ const MyBookingCard = ({ booking }) => {
             return timeSlot ? [timeSlot] : [];
         }
     })();
-    console.log(timeSlotArr, 'timeSlotArr from my booking card');
+
+    const handleCancelClick = async () => {
+        try {
+            const res = await fetch(`http://localhost:5000/booking/${booking._id}`, {
+                cache: 'no-store',
+                method: 'DELETE', // or PATCH, whatever your API uses
+            });
+
+            if (res.ok) {
+                onCancel(booking._id); // tells parent to remove it from state
+            }
+        } catch (err) {
+            console.error('Cancel failed', err);
+        }
+    };
 
     return (
         <div

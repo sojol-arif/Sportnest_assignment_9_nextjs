@@ -6,6 +6,7 @@ export function BookingCancelAlert({ bookingId }) {
 
   const handleCancelBooking = async (bookingId) => {
     const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+      cache: 'no-store',
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -13,8 +14,6 @@ export function BookingCancelAlert({ bookingId }) {
     });
 
     const data = await res.json();
-    
-    window.location.reload(); // Refresh the page after successful deletion
 
     console.log(data, 'data from booking cancel alert');
 
@@ -26,7 +25,7 @@ export function BookingCancelAlert({ bookingId }) {
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">
-            <AlertDialog.CloseTrigger />
+            <AlertDialog.CloseTrigger className="text-white"/>
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
               <AlertDialog.Heading>Cancel Booking permanently?</AlertDialog.Heading>
@@ -38,10 +37,11 @@ export function BookingCancelAlert({ bookingId }) {
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
-              <Button slot="close" variant="tertiary">
+              <Button slot="close" variant="primary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger" onClick={() => handleCancelBooking(bookingId)}>
+              <Button slot="close" variant="danger" onClick={() => handleCancelBooking(bookingId)}
+                className="bg-transparent border border-[#ff6467] text-red-400">
                 Cancel Booking
               </Button>
             </AlertDialog.Footer>

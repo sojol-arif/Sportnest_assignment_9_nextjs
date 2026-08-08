@@ -38,6 +38,7 @@ const BookingCard = ({ facility }) => {
 
         // console.log('bookingData', bookingData)
         const res = await fetch('http://localhost:5000/booking/', {
+            cache: 'no-store',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
