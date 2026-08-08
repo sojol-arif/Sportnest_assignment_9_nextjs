@@ -19,7 +19,6 @@ const AddFacilities = () => {
     const [slotInput, setSlotInput] = useState('');
     const [timeSlots, setTimeSlots] = useState([]);
 
-
     const addSlot = () => {
         const trimmed = slotInput.trim();
         if (!trimmed) return;
@@ -54,6 +53,7 @@ const AddFacilities = () => {
         //console.log('facility data to be sent to server', facility);
 
         const { data: tokenData } = await authClient.token();
+        console.log('Token data from add facility page', tokenData?.token);
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/facility`, {
             cache: 'no-store',
@@ -66,7 +66,7 @@ const AddFacilities = () => {
         });
 
         const data = await res.json();
-        //console.log('Response from server:', data);
+        console.log('Response from server:', data);
         toast("Facility added successfully!", { type: "success" });
         router.push('/facilities');
     }

@@ -2,7 +2,6 @@ import MyBookingCard from '@/components/MyBookingCard';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
-
 const MyBookingPage = async () => {
     const session = await auth.api.getSession({
         headers: await headers()
@@ -20,7 +19,7 @@ const MyBookingPage = async () => {
     });
     const bookingData = await res.json();
 
-    //console.log('Total booking data from bookings page', bookingData);
+    console.log('Total booking data from bookings page', bookingData);
 
     return (
         <div className="min-h-screen bg-[#f4f6f2]">

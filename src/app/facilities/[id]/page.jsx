@@ -21,6 +21,8 @@ const FacilityDetails = async ({ params }) => {
     });
     const facility = await res.json();
 
+    console.log('facility from frontend Facility Details Page', facility);
+
     const { facilityName, facilityType, location, price, capacity, image, availableTimeSlots, description, _id } = facility
 
     const facilityOverview = [
